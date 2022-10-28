@@ -143,6 +143,7 @@
     <ClInclude Include="..\String.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Audio.cpp" />
     <ClCompile Include="..\Example.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

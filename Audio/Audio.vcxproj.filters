@@ -6,5 +6,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Example.cpp" />
+    <ClCompile Include="..\Audio.cpp" />
   </ItemGroup>
 </Project>
