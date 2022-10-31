@@ -40,6 +40,12 @@ namespace CodeMouse
         static MCIResult GetErrorString(MCIERROR errorCode);
     };
 
+    class InternalTool
+    {
+    public:
+        static std::wstring ShortPathName(const std::wstring& path);
+    };
+
     class Audio
     {
     public:

@@ -17,4 +17,12 @@ namespace CodeMouse
         if (ret) return MCIResult(0, errorText);
         else return MCIResult(1, L"");
     }
+
+    std::wstring InternalTool::ShortPathName(const std::wstring& path)
+    {
+        wchar_t buffer[MAX_PATH];
+        bool success = GetShortPathName(path.c_str(), buffer, MAX_PATH);
+        if (success) return std::wstring(buffer);
+        else return std::wstring();
+    }
 }
