@@ -28,7 +28,7 @@ namespace CodeMouse
 
         bool OK()
         {
-            return errorCode == 0;
+            return this->errorCode == 0;
         }
     };
 
