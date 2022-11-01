@@ -38,6 +38,8 @@ namespace CodeMouse
         static MCIResult SendString(const std::wstring& s);
 
         static MCIResult GetErrorString(MCIERROR errorCode);
+
+        static MCIResult SendStringAndGetErrorString(const std::wstring& s);
     };
 
     class MCIHelper

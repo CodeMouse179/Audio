@@ -18,33 +18,31 @@ namespace CodeMouse
         else return MCIResult(1, L"");
     }
 
+    MCIResult MCI::SendStringAndGetErrorString(const std::wstring& s)
+    {
+        MCIResult result = MCI::SendString(s);
+        if (result.OK()) return result;
+        MCIResult error = MCI::GetErrorString(result.errorCode);
+        return MCIResult(result.errorCode, error.returnString);
+    }
+
     MCIResult MCIHelper::Open(const std::wstring& path, const std::wstring& alias)
     {
         std::wstring shortPathName = InternalTool::ShortPathName(path);
-        MCIResult result;
         if (alias == L"")
-            result = MCI::SendString(StringW::Format(L"open {0}", shortPathName));
+            return MCI::SendStringAndGetErrorString(StringW::Format(L"open {0}", shortPathName));
         else
-            result = MCI::SendString(StringW::Format(L"open {0} alias {1}", shortPathName, alias));
-        if (result.OK())
-        {
-            return result;
-        }
-        else
-        {
-            MCIResult error = MCI::GetErrorString(result.errorCode);
-            return MCIResult(result.errorCode, error.returnString);
-        }
+            return MCI::SendStringAndGetErrorString(StringW::Format(L"open {0} alias {1}", shortPathName, alias));
     }
 
     MCIResult MCIHelper::Close(const std::wstring& shortPathOrAlias)
     {
-        return MCI::SendString(StringW::Format(L"close {0}", shortPathOrAlias));
+        return MCI::SendStringAndGetErrorString(StringW::Format(L"close {0}", shortPathOrAlias));
     }
 
     MCIResult MCIHelper::Play(const std::wstring& shortPathOrAlias)
     {
-        return MCI::SendString(StringW::Format(L"play {0}", shortPathOrAlias));
+        return MCI::SendStringAndGetErrorString(StringW::Format(L"play {0}", shortPathOrAlias));
     }
 
     std::wstring InternalTool::ShortPathName(const std::wstring& path)
