@@ -21,10 +21,20 @@ namespace CodeMouse
     MCIResult MCIHelper::Open(const std::wstring& path, const std::wstring& alias)
     {
         std::wstring shortPathName = InternalTool::ShortPathName(path);
+        MCIResult result;
         if (alias == L"")
-            return MCI::SendString(StringW::Format(L"open {0}", shortPathName));
+            result = MCI::SendString(StringW::Format(L"open {0}", shortPathName));
         else
-            return MCI::SendString(StringW::Format(L"open {0} alias {1}", shortPathName, alias));
+            result = MCI::SendString(StringW::Format(L"open {0} alias {1}", shortPathName, alias));
+        if (result.OK())
+        {
+            return result;
+        }
+        else
+        {
+            MCIResult error = MCI::GetErrorString(result.errorCode);
+            return MCIResult(result.errorCode, error.returnString);
+        }
     }
 
     MCIResult MCIHelper::Close(const std::wstring& shortPathOrAlias)
