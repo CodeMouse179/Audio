@@ -45,6 +45,11 @@ namespace CodeMouse
         return MCI::SendStringAndGetErrorString(StringW::Format(L"play {0}", shortPathOrAlias));
     }
 
+    MCIResult MCIHelper::Stop(const std::wstring& shortPathOrAlias)
+    {
+        return MCI::SendStringAndGetErrorString(StringW::Format(L"stop {0}", shortPathOrAlias));
+    }
+
     std::wstring InternalTool::ShortPathName(const std::wstring& path)
     {
         wchar_t buffer[MAX_PATH];

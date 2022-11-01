@@ -50,6 +50,8 @@ namespace CodeMouse
         static MCIResult Close(const std::wstring& shortPathOrAlias);
 
         static MCIResult Play(const std::wstring& shortPathOrAlias);
+
+        static MCIResult Stop(const std::wstring& shortPathOrAlias);
     };
 
     class InternalTool
