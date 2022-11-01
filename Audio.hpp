@@ -40,9 +40,20 @@ namespace CodeMouse
         static MCIResult GetErrorString(MCIERROR errorCode);
     };
 
+    class MCIHelper
+    {
+    public:
+        static MCIResult Open(const std::wstring& path, const std::wstring& alias);
+
+        static MCIResult Close(const std::wstring& shortPathOrAlias);
+
+        static MCIResult Play(const std::wstring& shortPathOrAlias);
+    };
+
     class InternalTool
     {
     public:
+        //return empty string if failed.
         static std::wstring ShortPathName(const std::wstring& path);
     };
 

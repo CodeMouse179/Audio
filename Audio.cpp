@@ -18,6 +18,25 @@ namespace CodeMouse
         else return MCIResult(1, L"");
     }
 
+    MCIResult MCIHelper::Open(const std::wstring& path, const std::wstring& alias)
+    {
+        std::wstring shortPathName = InternalTool::ShortPathName(path);
+        if (alias == L"")
+            return MCI::SendString(StringW::Format(L"open {0}", shortPathName));
+        else
+            return MCI::SendString(StringW::Format(L"open {0} alias {1}", shortPathName, alias));
+    }
+
+    MCIResult MCIHelper::Close(const std::wstring& shortPathOrAlias)
+    {
+        return MCI::SendString(StringW::Format(L"close {0}", shortPathOrAlias));
+    }
+
+    MCIResult MCIHelper::Play(const std::wstring& shortPathOrAlias)
+    {
+        return MCI::SendString(StringW::Format(L"play {0}", shortPathOrAlias));
+    }
+
     std::wstring InternalTool::ShortPathName(const std::wstring& path)
     {
         wchar_t buffer[MAX_PATH];
