@@ -397,13 +397,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# Audio
-/Audio.exe
-/Audio.pdb
-
-# a(Audio)
-/a
-
 # CMake
 CMakeLists.txt.user
 CMakeCache.txt
@@ -416,3 +409,13 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+## .DS_Store(macOS)
+.DS_Store
+
+# Audio(CodeMouse.Audio - Windows)
+/Audio.exe
+/Audio.pdb
+
+# a(CodeMouse.Audio - POSIX)
+/a
