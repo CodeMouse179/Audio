@@ -1,5 +1,4 @@
 ﻿#include "Audio.hpp"
-#pragma comment(lib, "Winmm.lib")
 
 namespace CodeMouse
 {
